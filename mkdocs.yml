@@ -1,3 +1,6 @@
-site_name: My Docs
+site_name: CreepAmongProjects
 theme:
   name: material
+nav:
+  - Home: index.md
+  - About: about.md
