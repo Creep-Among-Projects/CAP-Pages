@@ -3,4 +3,5 @@ theme:
   name: material
 nav:
   - Home: index.md
+  - Projects: projects/index.md
   - About: about.md
