@@ -1,0 +1,12 @@
+name: MkDocs Deploy
+on: [push, pull_request]
+jobs:
+  setup_environment:
+    name: Setup MkDocs Environment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip --version
