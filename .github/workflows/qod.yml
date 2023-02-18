@@ -16,13 +16,16 @@ jobs:
         run: |
           pip install -r apps/qod/requirements.txt
       - name: Generate QoD
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
         run: |
           python apps/qod/main.py
       - name: Commit Changes
         run: |
           git config user.name woshishabii
           git config user.email 3488229708@qq.com
-          git status
+          git add .
+          git commit -m "QoD Generator: `date "+%Y-%m-%d %H:%M:%S UTC%:z"`" || true
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
