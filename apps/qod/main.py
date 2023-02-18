@@ -1,1 +1,4 @@
-import requests
+import os
+
+
+print([_ for _ in os.walk('.')])

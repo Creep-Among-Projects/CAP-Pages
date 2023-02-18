@@ -7,9 +7,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Place Holder
+      - name: Setup Python Environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+          architecture: x64
+      - name: Install Libraries
         run: |
-          ls
+          pip install -r apps/qod/requirements.txt
+      - name: Generate QoD
+        run: |
+          python apps/qod/main.py
       - name: Commit Changes
         run: |
           git config user.name woshishabii
