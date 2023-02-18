@@ -25,7 +25,7 @@ PEXELS_QUERY = ['nature', 'sunset', 'sea']
 
 HITOKOTO_URL = 'https://international.v1.hitokoto.cn/?c=d&c=f&c=h&c=i&c=k&max_length=25'
 
-engine = sqlalchemy.engine.create_engine('sqlite:///./apps/qod/db.db?check_same_thread=False', echo=True)
+engine = sqlalchemy.engine.create_engine('sqlite:///./apps/qod/db.db?check_same_thread=False', echo=False)
 Base = sqlalchemy.ext.declarative.declarative_base()
 
 
@@ -76,7 +76,7 @@ for _ in PEXELS_QUERY:
             )
             session.add(new_image)
             session.commit()
-            images_url.append(_i['id'])
+            images_url.append([_i['id'], _i['src']['original'], _i['avg_color']])
             break
         else:
             time.sleep(0.1)
@@ -91,13 +91,10 @@ print(images_url)
 downloaded_images = []
 for _ in images_url:
     try:
-        print('Downloading', _)
-        with open(f'./cache/{_}.jpeg', 'wb') as f:
-            f.write(requests.get(f'https://images.pexels.com/photos/{_}/pexels-photo.jpg',
-                                 headers=GENERAL_HEADERS).content)
-        print(requests.get(f'https://images.pexels.com/photos/{_}/pexels-photo.jpg',
-                                 headers=GENERAL_HEADERS).content)
-        downloaded_images.append(_)
+        print('Downloading', _[0])
+        with open(f'./cache/{_[0]}.jpg', 'wb') as f:
+            f.write(requests.get(_[1], headers=GENERAL_HEADERS).content)
+        downloaded_images.append([_[0], _[2]])
     except:
         pass
 
@@ -128,9 +125,8 @@ print('Fetched Quotes:', *[_['hitokoto'] for _ in quotes])
 # Mix Everything Up!
 for _ in downloaded_images:
     print('-'*80)
-    print('Image File:', f'./cache/{_}.jpg')
-    img = cv2.imread(f'./cache/{_}.jpeg')
-    img = Image.fromarray(img)
+    print('Image File:', f'./cache/{_[0]}.jpg')
+    img = Image.open(f'./cache/{_[0]}.jpg')
     print('Image Format:', img.format)
     print('Image Size:', img.size)
     print('Image Mode:', img.mode)
