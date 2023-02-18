@@ -1,5 +1,5 @@
 name: Quote of Day Generator
-on: [workflow_dispatch]
+on: [workflow_dispatch, push]
 jobs:
   generate_qod:
     name: Generate QoD

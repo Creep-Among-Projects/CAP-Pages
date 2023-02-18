@@ -54,18 +54,26 @@ session = sqlalchemy.orm.create_session(bind=engine)
 images_url = []
 
 for _ in PEXELS_QUERY:
-    pexels_search_result = requests.get('https://api.pexels.com/v1/search', headers=PEXELS_HEADERS,
-                                        params={'query': _, 'orientation': 'landscape'}).json()
-    for _i in pexels_search_result['photos']:
-        if session.query(Backgrounds).filter_by(pexels_id=_i['id']).all():
+    for c in range(10):
+        pexels_search_result = requests.get('https://api.pexels.com/v1/search', headers=PEXELS_HEADERS,
+                                            params={'query': _, 'orientation': 'landscape'}).json()
+        for _i in pexels_search_result['photos']:
+            if session.query(Backgrounds).filter_by(pexels_id=_i['id']).all():
+                continue
+            print('Picture Information', _i['id'], _i['alt'].replace(' ', '_'), sep='.')
+            new_image = Backgrounds(
+                alt=_i['alt'],
+                avg_color=_i['avg_color'],
+                pexels_id=_i['id'],
+                src=_i['src']['original'],
+                url=_i['url']
+            )
+            session.add(new_image)
+            session.commit()
+            images_url.append(_i['url'])
+            break
+        else:
             continue
-        print(_)
-        new_image = Backgrounds(
-            alt=_i['alt'],
-            avg_color=_i['avg_color'],
-            pexels_id=_i['id'],
-            src=_i['src']['original'],
-            url=_i['url']
-        )
-        session.add(new_image)
-        session.commit()
+        break
+
+print(images_url)
