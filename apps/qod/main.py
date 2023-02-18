@@ -30,6 +30,7 @@ class Backgrounds(Base):
     avg_color = sqlalchemy.Column(sqlalchemy.String(7))
     src = sqlalchemy.Column(sqlalchemy.String(200))
     alt = sqlalchemy.Column(sqlalchemy.String(200))
+    time = sqlalchemy.Column(sqlalchemy.DateTime, nullable=False, default=sqlalchemy.func.current_timestamp())
 
 
 Base.metadata.create_all(engine, checkfirst=True)
