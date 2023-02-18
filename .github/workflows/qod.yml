@@ -1,6 +1,8 @@
+name: Quote of Day Generator
 on: [workflow_dispatch]
 jobs:
   generate_qod:
+    name: Generate QoD
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
