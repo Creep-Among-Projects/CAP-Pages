@@ -104,6 +104,7 @@ quotes = []
 while len(quotes) < len(downloaded_images):
     hitokoto_result = requests.get(HITOKOTO_URL, headers=GENERAL_HEADERS).json()
     if session.query(Quotes).filter_by(hitokoto=hitokoto_result['hitokoto']).all():
+        time.sleep(1)
         continue
     print('Quote:', hitokoto_result['hitokoto'])
     new_quote = Quotes(
