@@ -6,6 +6,10 @@ import sqlalchemy
 import sqlalchemy.ext.declarative
 import sqlalchemy.orm
 
+GENERAL_HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 '
+                  'Safari/537.36 Edg/110.0.1587.46'
+}
 
 PEXELS_HEADERS = {
     'Authorization': os.getenv('PEXELS_API_KEY'),
@@ -16,7 +20,6 @@ PEXELS_HEADERS = {
 PEXELS_QUERY = ['nature', 'sunset', 'sea']
 
 HITOKOTO_URL = 'https://international.v1.hitokoto.cn/?c=d&c=f&c=h&c=i&c=k&max_length=25'
-
 
 engine = sqlalchemy.engine.create_engine('sqlite:///./apps/qod/db.db?check_same_thread=False', echo=True)
 Base = sqlalchemy.ext.declarative.declarative_base()
@@ -47,7 +50,6 @@ class Quotes(Base):
 Base.metadata.create_all(engine, checkfirst=True)
 session = sqlalchemy.orm.create_session(bind=engine)
 
-
 # Fetch Pexels Images
 
 images_url = []
@@ -69,7 +71,7 @@ for _ in PEXELS_QUERY:
             )
             session.add(new_image)
             session.commit()
-            images_url.append(_i['url'])
+            images_url.append(_i['id'])
             break
         else:
             continue
@@ -80,5 +82,14 @@ for _ in PEXELS_QUERY:
 print(images_url)
 
 # Download Pexels Images to Temporary Folder
+os.mkdir('cache')
 for _ in images_url:
-    print(_.split('/'))
+    try:
+        print('Downloading', _)
+        with open(f'./cache/{_}.jpg', 'wb') as f:
+            f.write(requests.get(f'https://images.pexels.com/photos/{_}/pexels-photo.jpg',
+                                 headers=GENERAL_HEADERS).content)
+    except:
+        pass
+
+print('Download finished:', os.walk('cache'))
