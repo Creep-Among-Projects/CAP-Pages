@@ -92,7 +92,7 @@ downloaded_images = []
 for _ in images_url:
     try:
         print('Downloading', _)
-        with open(f'./cache/{_}.jpg', 'wb') as f:
+        with open(f'./cache/{_}.jpeg', 'wb') as f:
             f.write(requests.get(f'https://images.pexels.com/photos/{_}/pexels-photo.jpg',
                                  headers=GENERAL_HEADERS).content)
         downloaded_images.append(_)
@@ -127,7 +127,7 @@ print('Fetched Quotes:', *[_['hitokoto'] for _ in quotes])
 for _ in downloaded_images:
     print('-'*80)
     print('Image File:', f'./cache/{_}.jpg')
-    img = cv2.imread(f'./cache/{_}.jpg')
+    img = cv2.imread(f'./cache/{_}.jpeg')
     img = Image.fromarray(img)
     print('Image Format:', img.format)
     print('Image Size:', img.size)
