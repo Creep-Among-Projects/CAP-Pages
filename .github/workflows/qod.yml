@@ -19,7 +19,7 @@ jobs:
       - name: Install Libraries
         run: |
           pip install -r apps/qod/requirements.txt
-          apt install ImageMagick
+          sudo apt install ImageMagick
           mkdir cache
           wget -O cache/smiley-sans.zip https://github.com/atelier-anchor/smiley-sans/releases/download/v1.1.1/smiley-sans-v1.1.1.zip
           ls cache
