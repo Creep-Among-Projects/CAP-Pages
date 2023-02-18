@@ -89,7 +89,6 @@ print(images_url)
 
 # Download Pexels Images to Temporary Folder
 downloaded_images = []
-os.mkdir('cache')
 for _ in images_url:
     try:
         print('Downloading', _)
