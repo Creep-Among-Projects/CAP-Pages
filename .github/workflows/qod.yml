@@ -22,7 +22,7 @@ jobs:
           mkdir cache
           wget -O cache/smiley-sans.zip https://github.com/atelier-anchor/smiley-sans/releases/download/v1.1.1/smiley-sans-v1.1.1.zip
           ls cache
-          unzip cache/smiley-sans.zip -d /cache
+          unzip cache/smiley-sans.zip -d cache
           ls cache
       - name: Generate QoD
         env:
