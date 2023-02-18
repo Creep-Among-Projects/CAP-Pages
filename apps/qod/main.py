@@ -142,6 +142,7 @@ for _ in downloaded_images:
         img.resize((1920, img.size[1] * 1920 / img.size[1]))
     else:
         img.resize((1920, 1080))
+    print('Resize Complete')
     img.save(f'./docs/qods/{_[0]}.jpg')
 
 # Write to MarkDown
