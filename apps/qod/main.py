@@ -14,4 +14,4 @@ PEXELS_PARA = {
 
 
 # Fetch Pexels Images
-print(requests.get('https://api.pexels.com/v1/search', headers=PEXELS_HEADERS, params=PEXELS_PARA))
+print(requests.get('https://api.pexels.com/v1/search', headers=PEXELS_HEADERS, params=PEXELS_PARA).json())
