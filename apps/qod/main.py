@@ -7,6 +7,9 @@ import sqlalchemy
 import sqlalchemy.ext.declarative
 import sqlalchemy.orm
 
+import cv2
+from PIL import Image
+
 GENERAL_HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 '
                   'Safari/537.36 Edg/110.0.1587.46'
@@ -120,3 +123,7 @@ while len(quotes) < len(downloaded_images):
     continue
 
 print('Fetched Quotes:', *[_['hitokoto'] for _ in quotes])
+
+# Mix Everything Up!
+for _ in downloaded_images:
+    img = cv2.imgread()
