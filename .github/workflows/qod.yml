@@ -1,0 +1,20 @@
+on: [workflow_dispatch]
+jobs:
+  generate_qod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Place Holder
+        run: |
+          ls
+      - name: Commit Changes
+        run: |
+          git config user.name woshishabii
+          git config user.email 3488229708@qq.com
+          git status
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
