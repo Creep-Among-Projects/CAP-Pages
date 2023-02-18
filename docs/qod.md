@@ -30,3 +30,6 @@ Theoretically three daily quotes will be automatically updated here each day.
 | Date / 日期 |Pexels ID|Quotes / 每日一言|Image / 图片|
 |:-----------:|:-------:|:--------------:|:----------:|
 |2006-04-16|114514191810|测试行|[114514](https://images.pexels.com/photos/15286/pexels-photo.jpg)|
+|2023-02-18|#|2387873|[图片链接](qods/#)|
+|2023-02-18|#|2928867|[图片链接](qods/#)|
+|2023-02-18|#|189349|[图片链接](qods/#)|
