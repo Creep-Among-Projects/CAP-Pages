@@ -103,4 +103,19 @@ print('Download finished:', downloaded_images)
 quotes = []
 while len(quotes) < len(downloaded_images):
     hitokoto_result = requests.get(HITOKOTO_URL, headers=GENERAL_HEADERS).json()
-    break
+    if session.query(Quotes).filter_by(hitokoto=hitokoto_result['hitokoto']).all():
+        continue
+    print('Quote:', hitokoto_result['hitokoto'])
+    new_quote = Quotes(
+        author=hitokoto_result['from_who'],
+        hitokoto=hitokoto_result['hitokoto'],
+        src=hitokoto_result['from'],
+        typ=hitokoto_result['type'],
+        uuid=hitokoto_result['uuid']
+    )
+    session.add(new_quote)
+    session.commit()
+    quotes.append(hitokoto_result)
+    continue
+
+print('Fetched Quotes:', *[_['hitokoto'] for _ in quotes])
