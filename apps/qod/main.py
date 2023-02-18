@@ -132,21 +132,14 @@ if not os.path.exists('./docs/qods/'):
 for _ in downloaded_images:
     print('-' * 80)
     print('Image File:', f'./cache/{_[0]}.jpg')
-    img = Image.open(f'./cache/{_[0]}.jpg')
-    print('Image Format:', img.format)
-    print('Image Size:', img.size)
-    print('Image Mode:', img.mode)
-    if img.size[0] / img.size[1] > 1920 / 1080:
-        size = (round(img.size[0] * 1080 / img.size[1]), 1080)
-        img.resize(size)
-    elif img.size[0] / img.size[1] < 1920 / 1080:
-        size = (1920, round(img.size[1] * 1920 / img.size[1]))
-        img.resize(size)
-    else:
-        size = (1920, 1080)
-        img.resize(size)
-    print('Resize Complete', size)
-    img.save(f'./docs/qods/{_[0]}.jpg')
+    img1 = Image.open(f'./cache/{_[0]}.jpg')
+    print('Image Format:', img1.format)
+    print('Image Size:', img1.size)
+    print('Image Mode:', img1.mode)
+    print('Resize Complete')
+    img2 = img1.copy()
+    img2.thumbnail((3840, 2160))
+    img2.save(f'./docs/qods/{_[0]}.jpg')
 
 # Write to MarkDown
 with open('./docs/qod.md', 'a+') as f:
