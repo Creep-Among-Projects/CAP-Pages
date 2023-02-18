@@ -122,7 +122,13 @@ while len(quotes) < len(downloaded_images):
 
 print('Fetched Quotes:', *[_['hitokoto'] for _ in quotes])
 
+# Combine Quotes and Backgrounds
+qod = [[quotes[_], downloaded_images[_]] for _ in range(len(downloaded_images))]
+
 # Mix Everything Up!
+if not os.path.exists('./docs/qods/'):
+    os.mkdir('./docs/qods')
+
 for _ in downloaded_images:
     print('-'*80)
     print('Image File:', f'./cache/{_[0]}.jpg')
@@ -130,3 +136,15 @@ for _ in downloaded_images:
     print('Image Format:', img.format)
     print('Image Size:', img.size)
     print('Image Mode:', img.mode)
+    if img.size[0] / img.size[1] > 1920 / 1080:
+        img.resize((img.size[0] * 1080 / img.size[1], 1080))
+    elif img.size[0] / img.size[1] < 1920 / 1080:
+        img.resize((1920, img.size[1] * 1920 / img.size[1]))
+    else:
+        img.resize((1920, 1080))
+    img.save(f'./docs/qods/{_[0]}.jpg')
+
+# Write to MarkDown
+with open('./docs/qod.md', 'a+') as f:
+    f.writelines([f'|{time.strftime("%Y-%m-%d", time.localtime())}|{_[1][0]}|'
+                  f'{_[0]}|[图片链接](qods/{_[1][0]})|' for _ in downloaded_images])
