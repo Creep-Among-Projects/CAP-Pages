@@ -95,7 +95,8 @@ for _ in images_url:
         with open(f'./cache/{_}.jpeg', 'wb') as f:
             f.write(requests.get(f'https://images.pexels.com/photos/{_}/pexels-photo.jpg',
                                  headers=GENERAL_HEADERS).content)
-        os.system(f'identify ./cache/{_}.jpeg')
+        print(requests.get(f'https://images.pexels.com/photos/{_}/pexels-photo.jpg',
+                                 headers=GENERAL_HEADERS).content)
         downloaded_images.append(_)
     except:
         pass
