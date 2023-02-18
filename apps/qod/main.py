@@ -1,4 +1,5 @@
 import os
+import time
 
 import requests
 
@@ -50,8 +51,9 @@ class Quotes(Base):
 Base.metadata.create_all(engine, checkfirst=True)
 session = sqlalchemy.orm.create_session(bind=engine)
 
-# Fetch Pexels Images
+print('IP Address:', requests.get('http://ip-api.com/json', headers=GENERAL_HEADERS).json()['query'])
 
+# Fetch Pexels Images
 images_url = []
 
 for _ in PEXELS_QUERY:
@@ -74,6 +76,7 @@ for _ in PEXELS_QUERY:
             images_url.append(_i['id'])
             break
         else:
+            time.sleep(0.1)
             continue
         break
     else:
@@ -92,4 +95,11 @@ for _ in images_url:
     except:
         pass
 
-print('Download finished:', os.walk('cache'))
+downloaded_images = [_ for _ in os.walk('cache')]
+print('Download finished:', downloaded_images)
+
+# Fetch Quotes
+quotes = []
+while len(quotes) < len(downloaded_images):
+    hitokoto_result = requests.get(HITOKOTO_URL, headers=GENERAL_HEADERS).json()
+    break
