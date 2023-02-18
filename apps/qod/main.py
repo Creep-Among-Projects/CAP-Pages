@@ -59,6 +59,7 @@ for _ in PEXELS_QUERY:
     for _i in pexels_search_result['photos']:
         if session.query(Backgrounds).filter_by(pexels_id=_i['id']).all():
             continue
+        print(_)
         new_image = Backgrounds(
             alt=_['alt'],
             avg_color=_['avg_color'],
