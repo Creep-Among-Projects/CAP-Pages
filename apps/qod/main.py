@@ -148,4 +148,4 @@ for _ in downloaded_images:
 # Write to MarkDown
 with open('./docs/qod.md', 'a+') as f:
     f.writelines([f'|{time.strftime("%Y-%m-%d", time.localtime())}|{_[1][0]}|'
-                  f'{_[0]}|[图片链接](qods/{_[1][0]})|' for _ in downloaded_images])
+                  f'{_[0]}|[图片链接](qods/{_[1][0]})|\n' for _ in downloaded_images])
