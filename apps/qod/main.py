@@ -85,6 +85,7 @@ for _ in PEXELS_QUERY:
 print(images_url)
 
 # Download Pexels Images to Temporary Folder
+downloaded_images = []
 os.mkdir('cache')
 for _ in images_url:
     try:
@@ -92,10 +93,10 @@ for _ in images_url:
         with open(f'./cache/{_}.jpg', 'wb') as f:
             f.write(requests.get(f'https://images.pexels.com/photos/{_}/pexels-photo.jpg',
                                  headers=GENERAL_HEADERS).content)
+        downloaded_images.append(_)
     except:
         pass
 
-downloaded_images = [_ for _ in os.walk('cache')]
 print('Download finished:', downloaded_images)
 
 # Fetch Quotes
