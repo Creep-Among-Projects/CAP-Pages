@@ -130,7 +130,7 @@ if not os.path.exists('./docs/qods/'):
     os.mkdir('./docs/qods')
 
 for _ in downloaded_images:
-    print('-'*80)
+    print('-' * 80)
     print('Image File:', f'./cache/{_[0]}.jpg')
     img = Image.open(f'./cache/{_[0]}.jpg')
     print('Image Format:', img.format)
@@ -149,4 +149,19 @@ for _ in downloaded_images:
 with open('./docs/qod.md', 'a+') as f:
     print(qod)
     f.writelines([f'|{time.strftime("%Y-%m-%d", time.localtime())}|{_[1][0]}|'
-                  f'{_[0]["hitokoto"]}|[图片链接](qods/{_[1][0]}.jpg)|\n' for _ in qod])
+                  f'{_[0]["hitokoto"]}|[图片链接](./qods/{_[1][0]}.jpg)|\n' for _ in qod])
+
+a = [
+    [
+        {'id': 411, 'uuid': 'de3678e6-ca91-4d06-bee0-904fe4762060', 'hitokoto': '无论是丢下还是被丢下，都是一样痛苦的。',
+       'type': 'f', 'from': '网络', 'from_who': None, 'creator': '锡了个纸', 'creator_uid': 0, 'reviewer': 0,
+       'commit_from': 'web', 'created_at': '1468949606', 'length': 19}, [551622, '#EFA816']],
+    [
+         {'id': 4151, 'uuid': 'e77cbb7c-a826-451a-af6c-a14de8a0ab2d',
+          'hitokoto': '花在女人身上的钱不能省，就算省了也不能让她知道。', 'type': 'f', 'from': 'Internet',
+          'from_who': None, 'creator': 'nightkeeper', 'creator_uid': 2454, 'reviewer': 0, 'commit_from': 'web',
+          'created_at': '1544287437', 'length': 24}, [66997, '#576A5E']], [
+         {'id': 7351, 'uuid': '46df9493-f6de-42fc-a630-b3f2350119bf',
+          'hitokoto': '当混浊成为一种常态，清白便成为一种罪过。', 'type': 'd', 'from': '盲观', 'from_who': '盲观',
+          'creator': 'QIQI', 'creator_uid': 494, 'reviewer': 4756, 'commit_from': 'web', 'created_at': '1623064894',
+          'length': 20}, [457881, '#70B9E4']]]
