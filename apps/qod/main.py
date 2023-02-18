@@ -17,6 +17,8 @@ PEXELS_PARA = {
 
 PEXELS_QUERY = ['nature', 'sunset', 'sea']
 
+HITOKOTO_URL = 'https://international.v1.hitokoto.cn/?c=d&c=f&c=h&c=i&c=k&max_length=25'
+
 
 engine = sqlalchemy.engine.create_engine('sqlite:///./apps/qod/db.db?check_same_thread=False', echo=True)
 Base = sqlalchemy.ext.declarative.declarative_base()
@@ -30,6 +32,17 @@ class Backgrounds(Base):
     avg_color = sqlalchemy.Column(sqlalchemy.String(7))
     src = sqlalchemy.Column(sqlalchemy.String(200))
     alt = sqlalchemy.Column(sqlalchemy.String(200))
+    time = sqlalchemy.Column(sqlalchemy.DateTime, nullable=False, default=sqlalchemy.func.current_timestamp())
+
+
+class Quotes(Base):
+    __tablename__ = 'quotes'
+    ID = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
+    uuid = sqlalchemy.Column(sqlalchemy.String(36))
+    hitokoto = sqlalchemy.Column(sqlalchemy.String(100))
+    typ = sqlalchemy.Column(sqlalchemy.String(1))
+    src = sqlalchemy.Column(sqlalchemy.String(100))
+    author = sqlalchemy.Column(sqlalchemy.String(50))
     time = sqlalchemy.Column(sqlalchemy.DateTime, nullable=False, default=sqlalchemy.func.current_timestamp())
 
 
