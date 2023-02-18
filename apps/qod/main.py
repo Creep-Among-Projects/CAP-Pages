@@ -7,7 +7,6 @@ import sqlalchemy
 import sqlalchemy.ext.declarative
 import sqlalchemy.orm
 
-import cv2
 from PIL import Image
 
 GENERAL_HEADERS = {
@@ -125,4 +124,9 @@ print('Fetched Quotes:', *[_['hitokoto'] for _ in quotes])
 
 # Mix Everything Up!
 for _ in downloaded_images:
-    img = cv2.imgread()
+    print('-'*80)
+    print('Image File:', f'./cache/{_}.jpg')
+    img = Image.open(f'./cache/{_}.jpg')
+    print('Image Format:', img.format)
+    print('Image Size:', img.size)
+    print('Image Mode:', img.mode)
