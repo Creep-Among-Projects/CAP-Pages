@@ -21,3 +21,4 @@ Thx:
 [![Pexels](https://images.pexels.com/lib/api/pexels.png "Photos Provided by Pexels")](https://pexels.com)
 [![Hitokoto](https://developer.hitokoto.cn/logo.png "Quote Provided by Hitokoto")](https://hitokoto.cn)
 [![Github Pages](https://github.githubassets.com/images/mona-loading-dark.gif "Github")](https://github.com)
+[![Smiley Sans](https://raw.githubusercontent.com/atelier-anchor/smiley-sans/main/docs/images/smiley-sans.light.svg "Smiley Sans")](https://github.com/atelier-anchor/smiley-sans)
