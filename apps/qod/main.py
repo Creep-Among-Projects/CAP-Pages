@@ -137,12 +137,15 @@ for _ in downloaded_images:
     print('Image Size:', img.size)
     print('Image Mode:', img.mode)
     if img.size[0] / img.size[1] > 1920 / 1080:
-        img.resize((round(img.size[0] * 1080 / img.size[1]), 1080))
+        size = (round(img.size[0] * 1080 / img.size[1]), 1080)
+        img.resize(size)
     elif img.size[0] / img.size[1] < 1920 / 1080:
-        img.resize((1920, round(img.size[1] * 1920 / img.size[1])))
+        size = (1920, round(img.size[1] * 1920 / img.size[1]))
+        img.resize(size)
     else:
-        img.resize((1920, 1080))
-    print('Resize Complete')
+        size = (1920, 1080)
+        img.resize(size)
+    print('Resize Complete', size)
     img.save(f'./docs/qods/{_[0]}.jpg')
 
 # Write to MarkDown
