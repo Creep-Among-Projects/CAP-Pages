@@ -139,7 +139,7 @@ for _ in downloaded_images:
     if img.size[0] / img.size[1] > 1920 / 1080:
         img.resize((round(img.size[0] * 1080 / img.size[1]), 1080))
     elif img.size[0] / img.size[1] < 1920 / 1080:
-        img.resize((1920, roung(img.size[1] * 1920 / img.size[1])))
+        img.resize((1920, round(img.size[1] * 1920 / img.size[1])))
     else:
         img.resize((1920, 1080))
     print('Resize Complete')
