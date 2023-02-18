@@ -61,11 +61,11 @@ for _ in PEXELS_QUERY:
             continue
         print(_)
         new_image = Backgrounds(
-            alt=_['alt'],
-            avg_color=_['avg_color'],
-            pexels_id=_['id'],
-            src=_['src']['original'],
-            url=_['url']
+            alt=_i['alt'],
+            avg_color=_i['avg_color'],
+            pexels_id=_i['id'],
+            src=_i['src']['original'],
+            url=_i['url']
         )
         session.add(new_image)
         session.commit()
