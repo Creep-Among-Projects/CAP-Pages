@@ -49,7 +49,6 @@ session = sqlalchemy.orm.create_session(bind=engine)
 
 
 # Fetch Pexels Images
-# print(requests.get('https://api.pexels.com/v1/search', headers=PEXELS_HEADERS, params=PEXELS_PARA).json())
 
 images_url = []
 
@@ -75,5 +74,11 @@ for _ in PEXELS_QUERY:
         else:
             continue
         break
+    else:
+        print('No More Pictures!')
 
 print(images_url)
+
+# Download Pexels Images to Temporary Folder
+for _ in images_url:
+    print(_.split('/'))
