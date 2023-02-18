@@ -136,13 +136,12 @@ for _ in downloaded_images:
     print('Image Format:', img1.format)
     print('Image Size:', img1.size)
     print('Image Mode:', img1.mode)
-    print('Resize Complete')
     img2 = img1.copy()
     img2.thumbnail((3840, 2160))
-    img2.save(f'./docs/qods/{_[0]}.jpg')
+    img2.save(f'./docs/qods/{_[0]}.bmp')
 
 # Write to MarkDown
 with open('./docs/qod.md', 'a+') as f:
     print(qod)
     f.writelines([f'|{time.strftime("%Y-%m-%d", time.localtime())}|{_[1][0]}|'
-                  f'{_[0]["hitokoto"]}|[图片链接](./qods/{_[1][0]}.jpg)|\n' for _ in qod])
+                  f'{_[0]["hitokoto"]}|[图片链接](./qods/{_[1][0]}.bmp)|\n' for _ in qod])
