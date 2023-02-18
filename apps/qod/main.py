@@ -4,15 +4,13 @@ import requests
 
 import sqlalchemy
 import sqlalchemy.ext.declarative
+import sqlalchemy.orm
 
 
 PEXELS_HEADERS = {
-    'Authorization': os.getenv('PEXELS_API_KEY')
-}
-
-PEXELS_PARA = {
-    'query': 'nature',
-    'orientation': 'landscape'
+    'Authorization': os.getenv('PEXELS_API_KEY'),
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 '
+                  'Safari/537.36 Edg/110.0.1587.46'
 }
 
 PEXELS_QUERY = ['nature', 'sunset', 'sea']
@@ -47,8 +45,26 @@ class Quotes(Base):
 
 
 Base.metadata.create_all(engine, checkfirst=True)
+session = sqlalchemy.orm.create_session(bind=engine)
 
 
 # Fetch Pexels Images
 # print(requests.get('https://api.pexels.com/v1/search', headers=PEXELS_HEADERS, params=PEXELS_PARA).json())
 
+images_url = []
+
+for _ in PEXELS_QUERY:
+    pexels_search_result = requests.get('https://api.pexels.com/v1/search', headers=PEXELS_HEADERS,
+                                        params={'query': _, 'orientation': 'landscape'}).json()
+    for _i in pexels_search_result['photos']:
+        if session.query(Backgrounds).filter_by(pexels_id=_i['id']).all():
+            continue
+        new_image = Backgrounds(
+            alt=_['alt'],
+            avg_color=_['avg_color'],
+            pexels_id=_['id'],
+            src=_['src']['original'],
+            url=_['url']
+        )
+        session.add(new_image)
+        session.commit()
