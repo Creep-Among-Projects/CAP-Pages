@@ -62,7 +62,7 @@ images_url = []
 for _ in PEXELS_QUERY:
     for c in range(10):
         pexels_search_result = requests.get('https://api.pexels.com/v1/search', headers=PEXELS_HEADERS,
-                                            params={'query': _, 'orientation': 'landscape'}).json()
+                                            params={'query': _, 'orientation': 'landscape', 'page': c}).json()
         for _i in pexels_search_result['photos']:
             if session.query(Backgrounds).filter_by(pexels_id=_i['id']).all():
                 continue
