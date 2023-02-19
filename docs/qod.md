@@ -14,8 +14,8 @@ Status:
 
 状态:
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Creep-Among-Projects/CAP-Pages/qod.yml?label=QODGEN&style=for-the-badge&color=66ccff)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Creep-Among-Projects/CAP-Pages/MkDocsDeploy.yml?label=MKDOCS&style=for-the-badge&color=66ccff)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Creep-Among-Projects/CAP-Pages/qod.yml?label=QODGEN&style=for-the-badge&color=66ccff)](https://github.com/Creep-Among-Projects/Creep-Among-Projects.github.io/actions/workflows/qod.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Creep-Among-Projects/CAP-Pages/MkDocsDeploy.yml?label=MKDOCS&style=for-the-badge&color=66ccff)](https://github.com/Creep-Among-Projects/Creep-Among-Projects.github.io/actions/workflows/MkDocsDeploy.yml)
 [![996.icu](https://img.shields.io/badge/996.icu-link-red?style=for-the-badge)](https://996.icu)
 
 Thx:
