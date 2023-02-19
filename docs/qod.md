@@ -8,6 +8,13 @@ Generate a quote with background three times a day.
 
 每天生成带有背景图片的激励语三回啊三回。
 
+Status:
+
+状态:
+
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Creep-Among-Projects/CAP-Pages/qod.yml?label=QODGEN&style=for-the-badge&color=66ccff)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Creep-Among-Projects/CAP-Pages/MkDocsDeploy.yml?label=MKDOCS&style=for-the-badge&color=66ccff)
+
 Thx:
 
 感谢：
