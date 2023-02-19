@@ -1,6 +1,8 @@
 name: Quote of Day Generator
 on: 
   push:
+    paths:
+      - "apps/qod/**"
   workflow_dispatch:
   schedule:
     - cron: '30 20 * * *'
