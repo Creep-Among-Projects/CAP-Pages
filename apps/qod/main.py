@@ -154,4 +154,4 @@ for _ in qod:
 with open('./docs/qod.md', 'a+') as f:
     print(qod)
     f.writelines([f'|{time.strftime("%Y-%m-%d", time.localtime())}|{_[1][0]}|'
-                  f'{_[0]["hitokoto"]}|[图片链接](./qods/{_[1][0]}.bmp)|\n' for _ in qod])
+                  f'{_[0]["hitokoto"]}|[图片链接](./qods/{_[1][0]}.jpg)|\n' for _ in qod])
