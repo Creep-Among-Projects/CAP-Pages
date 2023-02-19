@@ -160,7 +160,7 @@ for _ in qod:
     draw.text((img2.size[0] / 2, img2.size[1] - 300),
               text='By. 5925 Chen',
               fill=(255, 255, 255),
-              font=smileysans_source,
+              font=smileysans_author,
               anchor='mm',
               align='center')
     img2.save(f'./docs/qods/{_[1][0]}.jpg')
