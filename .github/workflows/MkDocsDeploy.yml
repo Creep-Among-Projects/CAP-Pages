@@ -1,6 +1,8 @@
 name: MkDocs Deploy
 on: 
   push:
+   paths-ignore:
+     - "**.py"
   pull_request:
   workflow_dispatch:
   workflow_run:
