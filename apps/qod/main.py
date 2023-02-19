@@ -141,9 +141,9 @@ for _ in qod:
     # img2.save(f'./docs/qods/{_[1][0]}.bmp')
 
     smileysans_hitokoto = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=140)
-    smileysans_source = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=120)
-    smileysans_author = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=80)
-    source_text = f'{_[0]["from_who"]} - {_[0]["from"]}' if _[0]['hitokoto'] else f'{_[0]["from"]}'
+    smileysans_source = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=100)
+    smileysans_author = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=50)
+    source_text = f'{_[0]["from_who"]} - {_[0]["from"]}' if _[0]['from_who'] else f'{_[0]["from"]}'
     draw = ImageDraw.ImageDraw(img2)
     draw.text((img2.size[0] / 2, img2.size[1] / 2),
               text=_[0]['hitokoto'],
