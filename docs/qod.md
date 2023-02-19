@@ -16,6 +16,7 @@ Status:
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Creep-Among-Projects/CAP-Pages/qod.yml?label=QODGEN&style=for-the-badge&color=66ccff)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Creep-Among-Projects/CAP-Pages/MkDocsDeploy.yml?label=MKDOCS&style=for-the-badge&color=66ccff)
+[![996.icu](https://img.shields.io/badge/996.icu-link-red?style=for-the-badge)](https://996.icu)
 
 Thx:
 
