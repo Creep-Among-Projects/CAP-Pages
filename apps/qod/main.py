@@ -140,8 +140,8 @@ for _ in qod:
     img2.thumbnail((3840, 2160))
     # img2.save(f'./docs/qods/{_[1][0]}.bmp')
 
-    smileysans_hitokoto = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=140)
-    smileysans_source = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=100)
+    smileysans_hitokoto = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=130)
+    smileysans_source = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=90)
     smileysans_author = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=50)
     source_text = f'{_[0]["from_who"]} - {_[0]["from"]}' if _[0]['from_who'] else f'{_[0]["from"]}'
     draw = ImageDraw.ImageDraw(img2)
@@ -157,7 +157,7 @@ for _ in qod:
               font=smileysans_source,
               anchor='mm',
               align='center')
-    draw.text((img2.size[0] / 2, img2.size[1] - 300),
+    draw.text((img2.size[0] / 2, img2.size[1] - 200),
               text='By. 5925 Chen',
               fill=(255, 255, 255),
               font=smileysans_author,
