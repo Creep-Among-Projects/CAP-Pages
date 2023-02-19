@@ -38,3 +38,6 @@ Theoretically three daily quotes will be automatically updated here each day.
 
 | Date / 日期 |Pexels ID|Quotes / 每日一言|Image / 图片|
 |:-----------:|:-------:|:--------------:|:----------:|
+|2023-02-19|15286|如果不被畏惧，神又何以为神。|[图片链接](./qods/15286.jpg)|
+|2023-02-19|3998365|青山隐隐水迢迢，秋尽江南草未凋。|[图片链接](./qods/3998365.jpg)|
+|2023-02-19|1001682|眼睛是心灵的窗户。|[图片链接](./qods/1001682.jpg)|
