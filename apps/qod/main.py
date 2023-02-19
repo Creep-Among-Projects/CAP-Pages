@@ -8,7 +8,7 @@ import sqlalchemy.ext.declarative
 import sqlalchemy.orm
 
 import cv2
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 GENERAL_HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 '
@@ -129,16 +129,26 @@ qod = [[quotes[_], downloaded_images[_]] for _ in range(len(downloaded_images))]
 if not os.path.exists('./docs/qods/'):
     os.mkdir('./docs/qods')
 
-for _ in downloaded_images:
+for _ in qod:
     print('-' * 80)
-    print('Image File:', f'./cache/{_[0]}.jpg')
-    img1 = Image.open(f'./cache/{_[0]}.jpg')
+    print('Image File:', f'./cache/{_[1][0]}.jpg')
+    img1 = Image.open(f'./cache/{_[1][0]}.jpg')
     print('Image Format:', img1.format)
     print('Image Size:', img1.size)
     print('Image Mode:', img1.mode)
     img2 = img1.copy()
     img2.thumbnail((3840, 2160))
-    img2.save(f'./docs/qods/{_[0]}.bmp')
+    # img2.save(f'./docs/qods/{_[1][0]}.bmp')
+
+    smileysans = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=36)
+    draw = ImageDraw.ImageDraw(img2)
+    draw.text((img2.size[0] / 2, img2.size[1] / 2),
+              text=_[0]['hitokoto'],
+              fill=(255, 255, 255),
+              font=smileysans,
+              anchor='mm',
+              align='center')
+    img2.save(f'./docs/qods/{_[1][0]}.bmp')
 
 # Write to MarkDown
 with open('./docs/qod.md', 'a+') as f:
