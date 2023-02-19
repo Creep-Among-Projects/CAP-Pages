@@ -6,7 +6,7 @@ nav:
   - Home: index.md
   - Projects: projects/index.md
   - About: about.md
-  - Qod: qod.md
+  - QoD: qod.md
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - javascripts/tablesort.js
