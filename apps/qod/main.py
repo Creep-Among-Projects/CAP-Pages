@@ -140,7 +140,7 @@ for _ in qod:
     img2.thumbnail((3840, 2160))
     # img2.save(f'./docs/qods/{_[1][0]}.bmp')
 
-    smileysans = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=36)
+    smileysans = ImageFont.truetype('./cache/SmileySans-Oblique.ttf', size=180)
     draw = ImageDraw.ImageDraw(img2)
     draw.text((img2.size[0] / 2, img2.size[1] / 2),
               text=_[0]['hitokoto'],
@@ -148,7 +148,7 @@ for _ in qod:
               font=smileysans,
               anchor='mm',
               align='center')
-    img2.save(f'./docs/qods/{_[1][0]}.bmp')
+    img2.save(f'./docs/qods/{_[1][0]}.jpg')
 
 # Write to MarkDown
 with open('./docs/qod.md', 'a+') as f:

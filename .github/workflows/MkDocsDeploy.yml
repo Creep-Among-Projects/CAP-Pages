@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
   workflow_run:
     workflows: ["Quote of Day Generator"]
+    types: [completed]
 
 jobs:
   build:
